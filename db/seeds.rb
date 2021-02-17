@@ -1,7 +1,21 @@
-restaurants = Restaurant.create([
-  { name: 'The Spoon', address: '12 Leaf Rd', phone_number: '1234561234', category: 'vegan' },
-  { name: 'The Fork', address: '16 Fern Rd', phone_number: '1294571234', category: 'vegan' },
-  { name: 'Fork & Knife', address: '8 Dogwood Rd', phone_number: '1294564234', category: 'Western' },
-  { name: 'Fern', address: '4 Chateau Rd', phone_number: '12348862234', category: 'Indian' },
-  { name: 'At Maya\'s', address: '5 Temple Rd', phone_number: '1264566234', category: 'Thai' }
-])
+10.times do
+    restaurant = Restaurant.new(
+      name: Faker::Restaurant.name,
+      address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+      category: ["chinese", "italian", "japanese", "french", "belgian"].sample
+      )
+    restaurant.save!
+end
+# # db/seeds.rb
+# puts "Cleaning database..."
+# Restaurant.destroy_all
+
+# puts "Creating restaurants..."
+# the_spoon = { name: "Dishoom", address: "7 Boundary St, London E2 7JE", stars: 5 }
+# pizza_east =  { name: "Pizza East", address: "56A Shoreditch High St, London E1 6PQ", stars: 4 }
+
+# [ dishoom, pizza_east ].each do |attributes|
+#   restaurant = Restaurant.create!(attributes)
+#   puts "Created #{restaurant.name}"
+# end
+# puts "Finished!"
